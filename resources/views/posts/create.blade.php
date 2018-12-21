@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<hr>
-<hr>
-<hr>
+
      <h1>Create Post</h1>
      {!! Form::open(['action' => 'PostController@store', 'method'=>'POST']) !!}
            <div class="form-group">

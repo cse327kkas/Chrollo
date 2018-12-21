@@ -5,7 +5,7 @@
 
     </div>
 
-        @endforeach
+     @endforeach
 
 @endif
 
