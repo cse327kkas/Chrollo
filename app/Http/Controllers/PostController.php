@@ -55,7 +55,8 @@ class PostController extends Controller
         $this->validate($request,[
             'title'=> 'required',
             'body'=>'required',
-            'cover_image' => 'image|nullable|max:2000',
+            'cover_image' => 'image|nullable|max:2000'
+            
             
             
         ]);
@@ -187,12 +188,7 @@ class PostController extends Controller
 
     public function actOnPost(Request $request,$id)
     {
-        $this->validate($request,[
-            
-            'likes_count' => 'integer|nullable|max:2000'
-            
-            
-        ]);
+       
        $action = $request->get('action');
        switch($action){
            case 'Like':
