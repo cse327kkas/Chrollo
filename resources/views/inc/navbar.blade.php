@@ -23,11 +23,11 @@
                               <a class="nav-link" href="/posts">Blog</a>
                             </li>
                           <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
+                              <a class="dropdown-item" href="/posts/hot">Hot</a>
+                              <a class="dropdown-item" href="/mostdiscussed">Most Discussed</a>
+                              <a class="dropdown-item" href="/posts">Latest</a>
                             </div>
                           </li>
 
@@ -55,7 +55,7 @@
                                 
                                 
 
-                                  <a class="dropdown-item" href="/dashboard">Dashboard
+                                  <a class="dropdown-item" href="/profile">Profile
                                        
                                     </a>
                                 

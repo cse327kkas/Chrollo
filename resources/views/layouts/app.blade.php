@@ -32,10 +32,12 @@
     </div>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
+        @yield('js')
         <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
         <script>
             CKEDITOR.replace( 'article-ckeditor' );
         </script>
+
 
 </body>
 </html>

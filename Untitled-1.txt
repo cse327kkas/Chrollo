@@ -25,3 +25,28 @@
         </script>
     </body>
 </html>
+
+
+
+
+
+
+                <br>
+                      <h3>Comments</h3>
+                        @if (Auth::check())
+                        @include('includes.errors')
+                        {{ Form::open(['action' => ['CommentsController@store', $post->id], 'method' => 'POST']) }}
+                        <p>{{ Form::textarea('body', old('body')) }}</p>
+                        {{ Form::hidden('posts_id', $posts->id) }}
+                        <p>{{ Form::submit('Send') }}</p>
+                        {{ Form::close() }}
+                        @endif
+                        @forelse ($posts-->comments as $comment)
+                        <p>{{ $comment->user->name }} {{$comment->created_at}}</p>
+                        <p>{{ $comment->body }}</p>
+                        <hr>
+                            @empty
+                            <p>This post has no comments</p>
+                            @endforelse
+            
+            

@@ -26,7 +26,13 @@ Route::get('/users/{id}', function($id){
 Route::get('/', 'Pagescontroller@index');
 Route::get('/about', 'Pagescontroller@about');
 Route::get('/services', 'Pagescontroller@services');
+Route::any('posts/hot','PostController@hot');
+Route::resource('comments', 'CommentsController');
+
+
 Route::resource('posts', 'PostController');
+
+//Route::any('posts/hot','PostController@hot');
     
 
 
@@ -36,4 +42,6 @@ Route::resource('posts', 'PostController');
 */
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/profile', 'ProfileController@index');
+Route::get('/post/{id}', 'PostController@show')->name('posts.show');
+Route::post('/posts/{id}/act','PostController@actOnPost');

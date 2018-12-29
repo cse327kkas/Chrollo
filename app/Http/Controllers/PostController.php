@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+
 use DB;
 
 class PostController extends Controller
@@ -54,8 +55,11 @@ class PostController extends Controller
         $this->validate($request,[
             'title'=> 'required',
             'body'=>'required',
-            'cover_image' => 'image|nullable|max:2000'
+            'cover_image' => 'image|nullable|max:2000',
+            
+            
         ]);
+        
         //handle file upload
         if($request->hasFile('cover_image')){
             //get file-name with the extension
@@ -93,6 +97,9 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        //$likePost = Post::find($id);
+        //$likeCtr = Like::where(['id' => $likePost->id])->get();
+        //return $likeCtr;
         return view('posts.show')->with('post', $post);
     }
 
@@ -176,5 +183,33 @@ class PostController extends Controller
             }
         $post->delete();
         return redirect('/posts')->with('success','Post Removed');
+    }
+
+    public function actOnPost(Request $request,$id)
+    {
+        $this->validate($request,[
+            
+            'likes_count' => 'integer|nullable|max:2000'
+            
+            
+        ]);
+       $action = $request->get('action');
+       switch($action){
+           case 'Like':
+              Post::where('id',$id)->increment('likes_count');
+              break;
+           case 'Unlike':
+              Post::where('id',$id)->decrement('likes_count');
+       }
+       return '';
+    }
+    public function hot()
+    {
+        //$posts = Post::all();
+        //$posts=Post::orderBy('title','desc')->take(1)->get();
+        //$posts = DB::select('SELECT * FROM posts');
+        //$posts=Post::orderBy('title','desc')->get();
+        $posts=Post::orderBy('likes_count','desc')->paginate(10);
+        return view('posts.hot')->with('posts',$posts);
     }
 }
